@@ -17,7 +17,7 @@ const VideoChatApp = () => {
   const { roomId } = useParams();
   const [socket, setSocket] = useState(null);
   const { username, setUsername } = useUsername("");
-  const { roomName, setRoomName } = useRoom("");
+  const { roomName, setRoomName } = useRoom(roomId);
   // const [username, setUsername] = useState("kumar");
   // const [roomName, setRoomName] = useState(roomId);
   let peerVideo = document.getElementById("peer-video");
@@ -164,7 +164,7 @@ const VideoChatApp = () => {
   };
 
   const joinRoom = () => {
-    socket.emit("joinRoom", { roomName:"123", userName: username }, (data) => {
+    socket.emit("joinRoom", { roomName:roomId, userName: username }, (data) => {
       console.log(`Router RTP Capabilities... ${data.rtpCapabilities}`);
       // we assign to local variable and will be used when
       // loading the client Device (see createDevice above)
