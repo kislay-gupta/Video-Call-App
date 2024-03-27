@@ -17,7 +17,7 @@ const VideoChatApp = () => {
   const { roomId } = useParams();
   const [socket, setSocket] = useState(null);
   const { username, setUsername } = useUsername("");
-  const { roomName, setRoomName } = useRoom("");
+  const { roomName, setRoomName } = useRoom(roomId);
   // const [username, setUsername] = useState("kumar");
   // const [roomName, setRoomName] = useState(roomId);
   let peerVideo = document.getElementById("peer-video");
